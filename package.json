@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "mpvue": "^1.0.10",
-    "vue-property-decorator": "^6.0.0",
     "vuex": "^2.3.1"
   },
   "devDependencies": {
