@@ -1,5 +1,5 @@
 <template>
-  <div>秒杀活动</div>
+  <div>我的订单</div>
 </template>
 
 <script>

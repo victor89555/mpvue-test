@@ -1,5 +1,5 @@
 <template>
-  <div>秒杀活动</div>
+  <div>添加地址</div>
 </template>
 
 <script>

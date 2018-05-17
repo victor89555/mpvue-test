@@ -1,85 +1,69 @@
 <template>
-  <div>购物车</div>
+  <view>
+    <view style="margin-bottom: 100rpx;">
+      <picker @change="bindPickerChange" :value="index" :range="array">
+        <view class="picker">
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view class="bottom-bar">
+      <view class="bd" @click="bindViewTap()">价格：￥80.00</view>
+      <view class="btn-buy" @click="clickHandle">购买</view>
+    </view>
+  </view>
 </template>
 
 <script>
-  import card from '@/components/card'
-
   export default {
     data () {
       return {
         motto: 'Hello World',
-        userInfo: {}
+        userInfo: {},
+        index: 0,
+        array: ['A', 'B', 'C']
       }
-    },
-
-    components: {
-      card
     },
 
     methods: {
       bindViewTap () {
-        const url = '../logs/main'
-        wx.navigateTo({ url })
+        const url = '../home/main'
+        wx.switchTab({ url })
       },
-      getUserInfo () {
-        // 调用登录接口
-        wx.login({
-          success: () => {
-            wx.getUserInfo({
-              success: (res) => {
-                this.userInfo = res.userInfo
-              }
-            })
-          }
-        })
+      clickHandle (e) {
+        console.log('clickHandle:', e)
       },
-      clickHandle (msg, ev) {
-        console.log('clickHandle:', msg, ev)
+      bindPickerChange (e) {
+        console.log(e.target.value)
+        this.index = e.target.value
       }
-    },
-
-    created () {
-      // 调用应用实例的方法获取全局数据
-      this.getUserInfo()
     }
   }
 </script>
 
-<style scoped>
-  .userinfo {
+<style>
+  .bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    background-color: #ffffff;
     display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
-  .userinfo-avatar {
-    width: 128rpx;
-    height: 128rpx;
-    margin: 20rpx;
-    border-radius: 50%;
+  .bottom-bar .bd {
+    flex: 1;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 24rpx;
   }
-
-  .userinfo-nickname {
-    color: #aaa;
-  }
-
-  .usermotto {
-    margin-top: 150px;
-  }
-
-  .form-control {
-    display: block;
-    padding: 0 12px;
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
-  }
-
-  .counter {
-    display: inline-block;
-    margin: 10px auto;
-    padding: 5px 10px;
-    color: blue;
-    border: 1px solid blue;
+  .bottom-bar .btn-buy {
+    width: 200rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background-color: #EE5757;
+    color: #ffffff;
   }
 </style>
