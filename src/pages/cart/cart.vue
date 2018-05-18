@@ -27,8 +27,8 @@
 
     methods: {
       bindViewTap () {
-        const url = '../home/main'
-        wx.switchTab({ url })
+        const url = '../my-orders/main'
+        wx.navigateTo({ url })
       },
       clickHandle (e) {
         console.log('clickHandle:', e)
@@ -37,6 +37,21 @@
         console.log(e.target.value)
         this.index = e.target.value
       }
+    },
+    onLoad: function () {
+      console.log('onLoad')
+    },
+    onReady: function () {
+      console.log('onReady')
+    },
+    onShow: function () {
+      console.log('onShow')
+    },
+    onHide: function () {
+      console.log('onHide')
+    },
+    onUnLoad: function () {
+      console.log('onUnLoad')
     }
   }
 </script>
